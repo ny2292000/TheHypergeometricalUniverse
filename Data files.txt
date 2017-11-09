@@ -1,0 +1,17 @@
+Data files from SDSS are here:
+
+The SDSS data contained two sets:
+
+galaxy_DR12v5_CMASS_North.fits .gz
+galaxy_DR12v5_LOWZ_North.fits. gz
+galaxy_DR12v5_CMASS_South.fits .gz
+galaxy_DR12v5_LOWZ_South.fits. gz
+
+The links are:
+http://data.sdss.org/sas/dr12/boss/lss/galaxy_DR12v5_CMASS_North.fits.gz
+http://data.sdss.org/sas/dr12/boss/lss/galaxy_DR12v5_CMASS_South.fits.gz
+http://data.sdss.org/sas/dr12/boss/lss/galaxy_DR12v5_LOWZ_North.fits.gz
+http://data.sdss.org/sas/dr12/boss/lss/galaxy_DR12v5_LOWZ_South.fits.gz
+
+Data files for Supernova Survey are here:
+http://supernova.lbl.gov/union/figures/SCPUnion2.1_mu_vs_z.txt
