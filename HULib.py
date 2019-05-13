@@ -83,12 +83,13 @@ def fix_BOSS_data(myGalaxy):
     print(myGalaxy.columns)
     pi4 = np.pi / 4.0
     sqrt2 = np.sqrt(2)
+    npi=  np.pi/180.0 
     myGalaxy.DEC = myGalaxy.DEC.round(1)
     myGalaxy.RA = myGalaxy.RA.round(1)
-    myGalaxy['CosRA'] = np.cos(myGalaxy.RA / 180.0 * np.pi)
-    myGalaxy['SinRA'] = np.sin(myGalaxy.RA / 180.0 * np.pi)
-    myGalaxy['CosDEC'] = np.cos((myGalaxy.DEC) / 180.0 * np.pi)
-    myGalaxy['SinDEC'] = np.sin((myGalaxy.DEC) / 180.0 * np.pi)
+    myGalaxy['CosRA'] = np.cos(myGalaxy.RA * npi)
+    myGalaxy['SinRA'] = np.sin(myGalaxy.RA * npi)
+    myGalaxy['CosDEC'] = np.cos(myGalaxy.DEC * npi)
+    myGalaxy['SinDEC'] = np.sin(myGalaxy.DEC * npi)
     myGalaxy.Z = myGalaxy.Z.abs()
     myGalaxy['distance0'] = np.abs(zDistance(myGalaxy.Z))
     myGalaxy['distance'] = 0.0
