@@ -103,6 +103,32 @@ def fix_BOSS_data(myGalaxy):
     return myGalaxy
 
 @jit
+def fix_BOSS_data_noBinning(myGalaxy):
+    print(myGalaxy.columns)
+    pi4 = np.pi / 4.0
+    sqrt2 = np.sqrt(2)
+    npi=  np.pi/180.0 
+    myGalaxy.DEC = myGalaxy.DEC.round(3)
+    myGalaxy.RA = myGalaxy.RA.round(1)
+    myGalaxy['CosRA'] = np.cos(myGalaxy.RA * npi)
+    myGalaxy['SinRA'] = np.sin(myGalaxy.RA * npi)
+    myGalaxy['CosDEC'] = np.cos(myGalaxy.DEC * npi)
+    myGalaxy['SinDEC'] = np.sin(myGalaxy.DEC * npi)
+    myGalaxy.Z = myGalaxy.Z.abs()
+    myGalaxy['distance0'] = np.abs(zDistance(myGalaxy.Z))
+    myGalaxy['distance'] = 0.0
+    myGalaxy['density'] = 0.0
+    myGalaxy['Me'] = myGalaxy['NZ']
+#     n = 3
+    n=5
+#     myGalaxy['alpha'] = np.round(pi4 - np.arcsin(1 / sqrt2 / (1 + np.abs(myGalaxy.Z))), n)
+    myGalaxy['alpha'] = np.abs(myGalaxy.Z)
+    myGalaxy['x'] = np.round(myGalaxy.alpha * myGalaxy.CosDEC * myGalaxy.CosRA, n)
+    myGalaxy['y'] = np.round(myGalaxy.alpha * myGalaxy.CosDEC * myGalaxy.SinRA, n)
+    myGalaxy['z'] = np.round(myGalaxy.alpha * myGalaxy.SinDEC, n)
+    return myGalaxy
+
+@jit
 def fix_Obj_data(myGalaxy):
     print(myGalaxy.columns)
     pi4 = np.pi / 4.0
