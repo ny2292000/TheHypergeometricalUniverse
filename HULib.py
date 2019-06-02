@@ -248,3 +248,30 @@ def zDistribution(mySet, chunckGalaxies):
     zDensity = zDensity / np.max(zDensity.values)
     return zDensity, dDensity
 
+
+
+if __name__=="__main__":
+    import parameters
+    import pandas as pd
+    import numpy as np
+    parameters.saveme = False
+
+    mySet = [0, 1]
+    a = mySet[0]
+    b = mySet[1]
+    df01, autocorr01 = TwoPointCorr(mySet, parameters.NumGalaxies, correctMe=parameters.correctMe)
+
+    # 2-Point Correlation vs d
+    print(parameters.saveme)
+    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(16, 10))
+    for xx in df01.columns[3:4]:
+        df01['x'] = df01.index
+        df01.plot(ax=ax, x='x', y=xx, title='Universe 2-point correlation', legend=True)
+        plt.axvline(x=0.3)
+        plt.axvline(x=0.05)
+    plt.xlim([0, 0.5])
+    plt.ylim([0, 1.0])
+    if parameters.saveme:
+        fig.savefig(parameters.imgAddress + 'CloseUniverseFinal' + str(a) + str(b) + '.png', dpi=100)
+        df01.to_excel(parameters.imgAddress + 'CloseUniverseFinal' + str(a) + str(b) + '.xlsx')
+        autocorr01.to_excel(parameters.imgAddress + 'autocorr_' + str(a) + str(b) + str(parameters.correctMe) + '.xlsx')
