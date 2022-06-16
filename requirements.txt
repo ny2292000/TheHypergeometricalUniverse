@@ -50,7 +50,7 @@ msgpack==0.6.1
 nbconvert==5.5.0
 nbformat==4.4.0
 networkx==2.3
-notebook==6.1.5
+notebook==6.4.12
 numba==0.43.1
 numpy==1.16.3
 olefile==0.46
