@@ -52,7 +52,7 @@ nbformat==4.4.0
 networkx==2.3
 notebook==6.1.5
 numba==0.43.1
-numpy==1.16.3
+numpy==1.22.0
 olefile==0.46
 packaging==19.0
 pandas==0.24.2
